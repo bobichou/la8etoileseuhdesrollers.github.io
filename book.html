@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <title La ********e des rollers></title>
+
+    <!--meta -->
+    <meta charset ="UTF 8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="media/faviconroller.png" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=AUp1qIH5ZEgikDreL3vzTNmHOplPKi_jAcz4vGheS-uHzpx_ZQmBb4nxgltcdpEg6Yh9zju0Y58GyGR_&currency=EUR"></script>
+   
+</head>
+
+<body> 
+
+
+    <nav class="navbar">
+        <a href="#" class="logo">LA 8 ÉTOILES EUH DES ROLLERS</a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Back to Love </a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <header>
+    </header>
+
+
+    <section id="paypal">
+        <div id = "Bouquin">
+            <h3>Le livre numérique </h3>
+                <br>
+                <a href="#"><iframe src="media/CouvertureLivre.png" width="700" height="900" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy=""></iframe></a>
+        </div>
+        <div id = "paypal-button-container">
+                <script>
+                    paypal.Buttons({
+                        createOrder: function(data,actions){
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: '1'
+                                    }
+                                }]
+                            })
+                        },
+                        onApprove: function(data, actions){
+                            return actions.order.capture().then(function(details){
+                                alert("Transaction OK : "+details.payer.name.given_name);
+                            })
+
+                        },
+                        onError: function(err){
+                            console.error('Payment error :', err);
+                            alert("Paiement échoué!");
+
+                        }
+                    }).render("#paypal-button-container");
+                </script>
+        </div>     
+    </section>
+
+
+</body>
+
+
+
+    
+
+
+
+
+
+<script>
+    const menuHamburger = document.querySelector(".menu-hamburger")
+    const navLinks = document.querySelector(".nav-links")
+
+    menuHamburger.addEventListener('click',()=>{
+    navLinks.classList.toggle('mobile-menu')
+    })
+</script>
+
+
+
+</html>
